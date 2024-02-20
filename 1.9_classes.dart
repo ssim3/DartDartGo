@@ -1,41 +1,68 @@
-class Person {
-  String? name;
+// Basic class with 2 properties
+class Animal {
   int? age;
+  bool? isFriendly;
 
-  void showOutput() {
-    print(this.name);
-    print(this.age);
+  void displayInfo()
+  {
+    print("Age: $age");
+    print("isFriendly: $isFriendly");
   }
 }
 
-class Doggo {
-  String? name;
-  String? breed;
-  int? age;
+// Vehicle class with parameterized constructor and Named Constructors
+// Named constructor are used to implement multiple constructors for a class or to provide extra clarity
+class Vehicle {
+  int? noOfWheels;
+  bool? isElectric;
 
-  // Constructors
-  Doggo(String name, String breed, [int age = 5]) {
-    this.name = name;
-    this.breed = breed;
-    this.age = age;
+  // Constructor
+  Vehicle(this.noOfWheels, this.isElectric);
+
+  // Named Constructor
+  Vehicle.gas(int noOfWheels)
+  {
+    this.noOfWheels = noOfWheels;
+    this.isElectric = false;
+
+    print("Gas Vehicle");
   }
 
-  void showOutput() {
-    print(this.name);
-    print(this.breed);
-    print(this.age);
+  // Named Constructor
+  Vehicle.electric(int noOfWheels)
+  {
+    this.noOfWheels = noOfWheels;
+    this.isElectric = true;
+
+    print("Electric Vehicle");
+  }
+
+  void displayInfo()
+  {
+    print("Number of Wheels: $noOfWheels");
+    print("isElectric: $isElectric");
   }
 }
 
 void main() {
-  Person firstPerson = Person();
+  // Creating instance of Animal class and accessing class members
+  Animal animal = new Animal(); // Default Constructor
+  animal.age = 5;
+  animal.isFriendly = true;
 
-  firstPerson.name = "Jonathan";
-  firstPerson.age = 23;
+  animal.displayInfo();
 
-  firstPerson.showOutput();
+  // Creating instance of Vehicle Class using Constructor
+  Vehicle vehicle = new Vehicle(4, false);
+  vehicle.displayInfo();
 
-  // doggo
-  Doggo dog = Doggo("Mark", "Golden Retriever", 15);
-  dog.showOutput();
+  // Creating instance of Vehicle class using Named Constructor
+  Vehicle gasVehicle = new Vehicle.gas(8);
+  gasVehicle.displayInfo();
+
+  // Creating instance of Vehicle class using Named Constructor
+  Vehicle electricVehicle = new Vehicle.electric(4);
+  electricVehicle.displayInfo();
+
+
 }
