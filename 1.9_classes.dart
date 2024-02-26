@@ -45,9 +45,23 @@ class Vehicle {
 }
 
 class Car extends Vehicle {
-  Car(isElectric) : super(isElectric) {
-    this.noOfWheels = 4;
+
+  // Subclass properties
+  String? color;
+
+  // Inheriting constructor
+  Car({bool? isElectric, String? color}) : super(4, isElectric)
+  {
+    this.color = color;
   }
+
+  // Overriding Class members
+  @override
+  void displayInfo() {
+    super.displayInfo();
+    print("Color: ${this.color}");
+  }
+
 }
 
 // Encapsulation in Dart (Private Properties, Getters, Setters)
@@ -117,4 +131,8 @@ void main() {
   john.setDep("Logistics");
 
   john.displayInfo();
+
+  // Inheritance
+  Car car = new Car(isElectric: true, color: "Purple");
+  car.displayInfo();
 }
